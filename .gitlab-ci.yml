@@ -1,9 +1,6 @@
-image: ruby:2.1
-
 pages:
   script:
-  - gem install jekyll
-  - jekyll build -d public/
+  - cp index.html public/
   artifacts:
     paths:
     - public
