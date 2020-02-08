@@ -4,10 +4,12 @@ stages:
 pages:
   stage: deploy
   script:
-  - mkdir public
-  - cp index.html public
+    - npm run build
+    # Gitlab pages requires the directory with static content to be called public
+    - rm -rf public
+    - mv build public
   artifacts:
     paths:
-    - public
+      - public
   only:
-  - master
+    - master

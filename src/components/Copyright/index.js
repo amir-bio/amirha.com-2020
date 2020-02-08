@@ -5,7 +5,7 @@ import React from 'react'
 const copyrightYear = () => {
   const originalCreationYear = '2020'
   const currentYear = new Date().getFullYear()
-  if (currentYear == originalCreationYear) {
+  if (currentYear === originalCreationYear) {
     return originalCreationYear
   } else {
     return originalCreationYear + '-' + currentYear
