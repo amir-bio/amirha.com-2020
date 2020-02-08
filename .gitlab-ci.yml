@@ -2,9 +2,16 @@ image: node:11.10
 stages:
   - deploy
 
+cache:
+  key: global-cache
+  paths:
+    - node_modules/
+  policy: pull-push
+
 pages:
   stage: deploy
   script:
+    - npm install
     - npm run build
     # Gitlab pages requires the directory with static content to be called public
     - rm -rf public
