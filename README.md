@@ -25,6 +25,10 @@ npm run storybook
 ** BELOW IS README FROM CRA (to be modified and useful sections to be kept) **
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Favicon
+
+Favicon was generated at https://favicon.io/favicon-generator/?t=AA&ff=Roboto&fs=80&fc=%23FFFFFF&b=rounded&bc=%23293d5a
+
 ## Available Scripts
 
 In the project directory, you can run:
