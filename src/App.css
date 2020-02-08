@@ -1,3 +1,7 @@
+h2 {
+  font-size: 30px;
+}
+
 .App {
   background-color: #293d5a;
   color: #fff;
@@ -9,6 +13,12 @@
 
 .secondary-blue {
   color: #3fdfe9;
+}
+
+.content-box {
+  margin-top: 100px;
+  width: 65%;
+  margin: 100px auto;
 }
 
 #top-nav-bar {
@@ -39,9 +49,6 @@
 }
 
 #about-me {
-  margin-top: 100px;
-  width: 65%;
-  margin: 100px auto;
   display: flex;
   flex-wrap: nowrap;
 }
@@ -60,4 +67,42 @@
 
 #about-me img {
   float: right;
+}
+
+#icon-set-parent {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: baseline;
+}
+
+/* Each icon-set acts as a column */
+.icon-set {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.icon-set h3 {
+  color: #3fdfe9;
+  font-family: Roboto mono, 'Courier New';
+  font-size: 25px;
+}
+
+.icon-set ul {
+  padding: 0;
+}
+.icon-set li {
+  list-style-type: none;
+  text-decoration: none;
+  font-size: 20px;
+  line-height: 25px;
+}
+
+/* Align the icons and the text under them */
+.icon-set h3 {
+  vertical-align: top;
+  /* width: 150px;
+  height: 150px; */
 }

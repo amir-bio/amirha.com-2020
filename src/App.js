@@ -1,5 +1,4 @@
 import React from 'react'
-import logo from './logo.svg'
 import './App.css'
 
 import 'typeface-roboto'
@@ -10,16 +9,15 @@ import myPhoto from './me.png'
 import TopNavBar from './components/TopNavBar'
 import AboutMe from './components/AboutMe'
 import ToolsAndTech from './components/ToolsAndTech'
+import Timeline from './components/Timeline'
 
 function App() {
   return (
     <div className="App">
       <TopNavBar id="top-nav-bar" />
       <AboutMe id="about-me" photoPath={myPhoto} />
-      <ToolsAndTech />
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
+      <ToolsAndTech id="tools-tech" />
+      <Timeline />
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 const AboutMe = props => {
   return (
-    <div id={props.id}>
+    <div id={props.id} className="content-box">
       <div>
         <div className="mono-font secondary-blue">Hello, my name is</div>
         <h1 className="mono-font">Amirhossein Andohkosh</h1>
