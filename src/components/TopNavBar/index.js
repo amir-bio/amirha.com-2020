@@ -13,7 +13,7 @@ const TopNavBar = props => {
           <a href="#contact">Contact</a>
         </li>
         <li>
-          <a href="#bblog">Blog</a>
+          <a href="#blog">Blog</a>
         </li>
       </ul>
     </nav>
