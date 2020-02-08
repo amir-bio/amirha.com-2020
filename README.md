@@ -1,3 +1,28 @@
+# Amirha.com
+
+## Story book
+
+I'm experimenting with storybook for developing components in isolation before the app.
+
+### Why
+
+To design the system with components in mind  to encourage code modularisation
+and reusability. This will make iterative changes to the website easier to add
+thus allowing the website to hae independently evolving components
+
+### Setup
+
+Following  https://www.learnstorybook.com/intro-to-storybook/react/en/get-started/
+
+Ran `https://www.learnstorybook.com/intro-to-storybook/react/en/get-started/`
+
+To start it up:
+
+```bash
+npm run storybook
+```
+
+** BELOW IS README FROM CRA (to be modified and useful sections to be kept) **
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
