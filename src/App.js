@@ -9,7 +9,8 @@ import myPhoto from './me.png'
 import TopNavBar from './components/TopNavBar'
 import AboutMe from './components/AboutMe'
 import ToolsAndTech from './components/ToolsAndTech'
-import Timeline from './components/Timeline'
+// import Timeline from './components/Timeline'
+import Copyright from './components/Copyright'
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
       <TopNavBar id="top-nav-bar" />
       <AboutMe id="about-me" photoPath={myPhoto} />
       <ToolsAndTech id="tools-tech" />
-      <Timeline />
+      {/* <Timeline /> */}
+      <Copyright />
     </div>
   )
 }
