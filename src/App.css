@@ -1,38 +1,63 @@
 .App {
-  text-align: center;
+  background-color: #293d5a;
+  color: #fff;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.mono-font {
+  font-family: Roboto mono, Courier;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.secondary-blue {
+  color: #3fdfe9;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#top-nav-bar {
+  padding-top: 20px;
+  padding-right: 20px;
+}
+#top-nav-bar ul {
+  margin: 0;
+  padding: 0;
+  right: 50px;
+  list-style-type: none;
+  float: right;
+}
+
+#top-nav-bar li {
+  display: inline-block;
+  padding: 12.5px;
+  font-size: 16px;
+}
+
+#top-nav-bar a {
+  text-decoration: none;
+  color: #fff;
+}
+
+#top-nav-bar a:hover {
+  color: #3fdfe9;
+}
+
+#about-me {
+  margin-top: 100px;
+  width: 65%;
+  margin: 100px auto;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-wrap: nowrap;
 }
 
-.App-link {
-  color: #61dafb;
+#about-me h1 {
+  font-size: 50px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#about-me .secondary-blue {
+  font-size: 25px;
+}
+
+#about-me p {
+  font-size: 20px;
+}
+
+#about-me img {
+  float: right;
 }
