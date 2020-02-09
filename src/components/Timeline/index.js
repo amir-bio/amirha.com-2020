@@ -3,6 +3,27 @@ import React from 'react'
 const lightGreen = '#3ECF8E'
 const purple = '#9251ac'
 
+const timelineStyle = {
+  textAlign: 'center'
+}
+//tODO
+// parent of odd divs
+// margin-right: 50PX;
+// margin-left: -50px;
+// min-width: 20px; to small circle to ensure oddines don't collapse
+const timelineContainerOuterStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  width: 5,
+  margin: '20px auto',
+  backgroundColor: purple
+}
+
+const timelineContainerStyle = {
+  display: 'flex',
+  flexDirection: 'column'
+}
+
 const timelineEntryBoxStyle = {
   backgroundColor: lightGreen,
   display: 'block',
@@ -15,91 +36,145 @@ const timelineEntryBoxStyle = {
   textAlign: 'start'
 }
 
-const arrowRightStyle = {
-  width: 0,
-  height: 0,
-  borderTop: '60px solid transparent',
-  borderBottom: '60px solid transparent',
-  borderLeft: ' 60px solid green'
-}
-const arrowLeftStyle = {
+const triangleBorderStyle = '10px solid ' + lightGreen
+// returns style for arrow, with optional argument that reverse the direction
+const arrowStyle = rightSide => ({
   width: 0,
   height: 0,
   borderTop: '10px solid transparent',
   borderBottom: '10px solid transparent',
-  borderRight: '10px solid ' + lightGreen
-}
+  // if it's on the right side, the arrow should point to the right
+  ...(rightSide
+    ? { borderLeft: triangleBorderStyle }
+    : { borderRight: triangleBorderStyle })
+})
 
 const bigCircleStyle = {
-  padding: 10,
-  margin: 'auto',
+  backgroundColor: purple,
   borderRadius: '50%',
-  width: 70,
-  height: 70,
-  backgroundColor: purple
+  width: 50,
+  height: 50,
+  lineHeight: '50px',
+  textAlign: 'center',
+  alignSelf: 'center',
+  fontWeight: 'bold'
 }
-// #timeline {
-//   text-align: center;
-// }
 
-// #timeline-container {
-//   display: flex;
-//   align-items: center;
-//   flex-direction: column;
-// }
-
-const smallCircleStyle = {
-  padding: 10,
-  margin: 'auto',
+const smallCircleStyle = rightSide => ({
   borderRadius: '50%',
   width: 20,
+  minWidth: 20, //required to ensure left side circle don't have width of 0
   height: 20,
-  backgroundColor: purple
-}
-const timelineEntry = (text, direction) => (
-  <div style={{ display: 'flex' }}>
-    <div style={smallCircleStyle}></div>
+  backgroundColor: purple,
+  alignSelf: 'center',
+
+  // these values were derived by experimentation
+  ...(rightSide
+    ? { marginLeft: 40, marginRight: -12 }
+    : { marginLeft: -7, marginRight: 40 })
+})
+
+const TimelineEntry = ({ text, rightSide }) => (
+  <div
+    style={{
+      display: 'flex',
+      ...(rightSide
+        ? { margin: '0px 50px 20px 0', flexDirection: 'row-reverse' }
+        : { margin: '0px auto' })
+    }}
+  >
+    <div style={smallCircleStyle(rightSide)}></div>
     <div
       style={{
         alignContent: 'centre',
-        marginTop: 50,
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginLeft: -7,
+        // slideInFromLeft and slideInFromRight are defined in App.css
+        ...(rightSide
+          ? {
+              flexDirection: 'row-reverse',
+              animation: '1s ease-out 0s 1 slideInFromLeft'
+            }
+          : { animation: '1s ease-out 0s 1 slideInFromRight' })
       }}
     >
-      <div style={arrowLeftStyle}> </div>
+      <div style={arrowStyle(rightSide)}> </div>
       <div style={timelineEntryBoxStyle}> {text}</div>
     </div>
   </div>
 )
 
-// props.eventsInYear is expected to be an array
-const TimelineEntriesWithinAYear = props => (
-  <>{props.eventsInYear.map(event => timelineEntry(event))}</>
-)
-
-const AllTimelineEntries = props => (
+// eventsInYear is expected to be an array
+const TimelineEntriesWithinAYear = ({ eventsInYear }) => (
+  // every other entry is on the opposite direction
   <>
-    {Object.keys(props.data).map(year => (
-      <>
-        <div style={bigCircleStyle}>{year}</div>
-        <TimelineEntriesWithinAYear eventsInYear={props.data[year]} />
-      </>
+    {eventsInYear.map((event, index) => (
+      <TimelineEntry
+        key={index}
+        text={event.description}
+        rightSide={event.rightSide}
+      />
     ))}
   </>
 )
 
-// The data is passed through props.data which has the following expected format:
-// { year: [events...], year: [events...], ... }
-const Timeline = props => (
-  <div id={props.id}>
-    <h2 className="mono-font">My Journey so far</h2>
-    <div id="timeline-container">
-      {console.log('t1', props.data)}
-      <AllTimelineEntries data={props.data} />
+const AllTimelineEntries = ({ data }) => {
+  const years = Object.keys(data)
+  return (
+    <>
+      {years.map((year, index) => (
+        <div key={index} style={timelineContainerStyle}>
+          <div style={bigCircleStyle}>{year}</div>
+          <TimelineEntriesWithinAYear eventsInYear={data[year]} />
+        </div>
+      ))}
+    </>
+  )
+}
+
+// The data is passed through data which has the following expected format:
+// { year: ["Event description", events...], year: [events...], ... }
+// The data is augmented to indicate which side each event should be on
+// The entries alternate position regardless of the year section they're under
+// This is done at this level as the lower components don't have access to the
+// full list of entries and can't easily find out which side to render the entry on
+// Example of new structure
+// {
+//   "2011": [
+//     {
+//       "description": "Graduated ..",
+//       "rightSide": false
+//     },
+//     ...
+//   ],
+//   ...
+// }
+
+const Timeline = ({ data }) => {
+  let newDataStructure = {}
+  let rightSide = false
+  Object.entries(data).map(([year, events]) => {
+    newDataStructure[year] = []
+    for (const event of data[year]) {
+      // event is a string that describes the event
+      newDataStructure[year].push({
+        description: event,
+        rightSide: rightSide
+      })
+      rightSide = !rightSide // alternate boolean
+    }
+  })
+
+  return (
+    <div style={timelineStyle}>
+      <h2 className="mono-font">My Journey so far</h2>
+      <div id="timeline-container-outer" style={timelineContainerOuterStyle}>
+        <AllTimelineEntries data={newDataStructure} />
+      </div>
     </div>
-  </div>
-)
+  )
+}
 
 export default Timeline

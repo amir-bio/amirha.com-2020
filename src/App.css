@@ -111,30 +111,24 @@ h2 {
   text-align: center;
 }
 
-#timeline-container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-.big-circle {
-  padding: 10px;
-  margin: auto;
-  border-radius: 50%;
-  width: 70px;
-  height: 70px;
-  background-color: #9251ac;
-}
-
-.small-circle {
-  padding: 10px;
-  margin: auto;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  background-color: #9251ac;
-}
-
 #copyright {
   text-align: center;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
