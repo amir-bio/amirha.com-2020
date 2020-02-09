@@ -29,7 +29,9 @@ const timelineEntryBoxStyle = {
   paddingLeft: 20,
   paddingTop: 15,
   paddingBottom: 15,
-  textAlign: 'start'
+  display: 'flex',
+  alignItems: 'center', // centre the text vertically
+  textAlign: 'start' // ensure the text is still left aligned
 }
 
 const triangleBorderStyle = '10px solid ' + lightGreen
