@@ -1,9 +1,20 @@
 import React from 'react'
+
+import Typewriter from 'typewriter-effect'
+
 const AboutMe = props => {
   return (
     <div id={props.id} className="content-box">
       <div>
-        <div className="mono-font secondary-blue">Hello, my name is</div>
+        <div className="mono-font secondary-blue">
+          <Typewriter
+            options={{
+              strings: ['Hello, my name is'],
+              autoStart: true,
+              loop: false
+            }}
+          />
+        </div>
         <h1 className="mono-font">Amirhossein Andohkosh</h1>
         <div>
           <p>
