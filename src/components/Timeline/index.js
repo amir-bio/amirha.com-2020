@@ -74,37 +74,55 @@ const smallCircleStyle = rightSide => ({
     : { marginLeft: -7, marginRight: 40 })
 })
 
-const TimelineEntry = ({ text, rightSide }) => (
-  <div
-    style={{
-      display: 'flex',
-      ...(rightSide
-        ? { margin: '0px 50px 20px 0', flexDirection: 'row-reverse' }
-        : { margin: '0px auto' })
-    }}
-  >
-    <div style={smallCircleStyle(rightSide)}></div>
+const TimelineEntry = ({ text, rightSide }) => {
+  const [isVisible, setVisible] = React.useState(false)
+  const domRef = React.useRef()
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => setVisible(entry.isIntersecting))
+    })
+    observer.observe(domRef.current)
+  }, [])
+
+  return (
     <div
       style={{
-        alignContent: 'centre',
         display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginLeft: -7,
-        // slideInFromLeft and slideInFromRight are defined in App.css
         ...(rightSide
-          ? {
-              flexDirection: 'row-reverse',
-              animation: '1s ease-out 0s 1 slideInFromLeft'
-            }
-          : { animation: '1s ease-out 0s 1 slideInFromRight' })
+          ? { margin: '0px 50px 20px 0', flexDirection: 'row-reverse' }
+          : { margin: '0px auto' })
       }}
     >
-      <div style={arrowStyle(rightSide)}> </div>
-      <div style={timelineEntryBoxStyle}> {text}</div>
+      <div style={smallCircleStyle(rightSide)}></div>
+      <div
+        // add class name of fade-in-section-right or fade-in-section-left that determines the animation direction (defined in app.css)
+        className={`fade-in-section-${rightSide ? 'right' : 'left'} ${
+          isVisible ? 'is-visible' : ''
+        }`}
+        ref={domRef}
+        style={{
+          alignContent: 'centre',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginLeft: -7,
+          // slideInFromLeft and slideInFromRight are defined in App.css
+          ...(rightSide
+            ? {
+                flexDirection: 'row-reverse'
+                // animation: '1s ease-out 0s 1 slideInFromLeft'
+              }
+            : {
+                // animation: '1s ease-out 0s 1 slideInFromRight'
+              })
+        }}
+      >
+        <div style={arrowStyle(rightSide)}> </div>
+        <div style={timelineEntryBoxStyle}> {text}</div>
+      </div>
     </div>
-  </div>
-)
+  )
+}
 
 // eventsInYear is expected to be an array
 const TimelineEntriesWithinAYear = ({ eventsInYear }) => (
@@ -165,6 +183,7 @@ const Timeline = ({ data }) => {
       })
       rightSide = !rightSide // alternate boolean
     }
+    return newDataStructure // only here to avoid linter warning (cause being mixing of functional and procedural style)
   })
 
   return (

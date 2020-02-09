@@ -29,6 +29,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Favicon was generated at https://favicon.io/favicon-generator/?t=AA&ff=Roboto&fs=80&fc=%23FFFFFF&b=rounded&bc=%23293d5a
 
+## Timeline component
+
+The animation for this component was created based on this article: https://dev.to/selbekk/how-to-fade-in-content-as-it-scrolls-into-view-10j4
+
 ## Available Scripts
 
 In the project directory, you can run:
