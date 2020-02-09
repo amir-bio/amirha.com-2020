@@ -22,7 +22,6 @@ const timelineContainerStyle = {
 
 const timelineEntryBoxStyle = {
   backgroundColor: lightGreen,
-  display: 'block',
   fontSize: 20,
   width: 360,
   minHeight: 50,

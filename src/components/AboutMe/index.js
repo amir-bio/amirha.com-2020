@@ -1,21 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-import Typewriter from 'typewriter-effect'
+import Typist from 'react-typist'
 
 const AboutMe = props => {
+  const [introTyped, setIntroTyped] = useState(false)
+
   return (
     <div id={props.id} className="content-box">
       <div>
         <div className="mono-font secondary-blue">
-          <Typewriter
-            options={{
-              strings: ['Hello, my name is'],
-              autoStart: true,
-              loop: false
-            }}
-          />
+          <Typist
+            cursor={{ hideWhenDone: true, hideWhenDoneDelay: 0 }}
+            onTypingDone={() => setIntroTyped(true)}
+          >
+            Hello, my name is
+          </Typist>
         </div>
-        <h1 className="mono-font">Amirhossein Andohkosh</h1>
+        {introTyped ? (
+          <h1 className="mono-font">
+            <Typist
+              cursor={{
+                blink: true
+              }}
+            >
+              Amirhossein Andohkosh
+            </Typist>
+          </h1>
+        ) : null}
+
         <div>
           <p>
             I’m a Backend Engineer based in London. Currently, I’m working at

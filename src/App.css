@@ -169,3 +169,24 @@ h2 {
   /* The border is set to background color, as the container will still cause the purple line to appear */
   border-left: 5px dashed #293d5a;
 }
+
+/* CSS for to allow blinking for react-typist */
+.Typist .Cursor {
+  display: inline-block;
+}
+.Typist .Cursor--blinking {
+  opacity: 1;
+  animation: blink 1s linear infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
