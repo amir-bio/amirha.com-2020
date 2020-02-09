@@ -6,11 +6,7 @@ const purple = '#9251ac'
 const timelineStyle = {
   textAlign: 'center'
 }
-//tODO
-// parent of odd divs
-// margin-right: 50PX;
-// margin-left: -50px;
-// min-width: 20px; to small circle to ensure oddines don't collapse
+
 const timelineContainerOuterStyle = {
   display: 'flex',
   flexDirection: 'column',
@@ -95,7 +91,8 @@ const TimelineEntry = ({ text, rightSide }) => {
     >
       <div style={smallCircleStyle(rightSide)}></div>
       <div
-        // add class name of fade-in-section-right or fade-in-section-left that determines the animation direction (defined in app.css)
+        // add class name of fade-in-section-right or fade-in-section-left
+        // that determines the animation direction (defined in app.css)
         className={`fade-in-section-${rightSide ? 'right' : 'left'} ${
           isVisible ? 'is-visible' : ''
         }`}

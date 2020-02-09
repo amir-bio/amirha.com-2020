@@ -162,3 +162,10 @@ h2 {
   transform: none;
   visibility: visible;
 }
+
+#timeline-container-outer::after {
+  content: '';
+  height: 100px;
+  /* The border is set to background color, as the container will still cause the purple line to appear */
+  border-left: 5px dashed #293d5a;
+}
