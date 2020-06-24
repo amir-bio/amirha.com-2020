@@ -155,7 +155,13 @@ const Link = styled.a`
   margin-left:30px;
   margin-top:20px;
   margin-bottom:70px;
-`;
+  &:hover {
+    color: #3FDFE9;
+  }
+  `;
+// stroke: ${props => props.theme.colors.secondary};
+// When the issue with having to pass in the theme manually one by one is fixed, above should be replaced with this
+
 
 
 const H1 = styled.h1`
@@ -176,7 +182,7 @@ const H3 = styled.h3`
     text-align: center;
     color: "red";
     font-weight: ${props => props.theme.fontWeights.bold};
-    padding-top: 30px;
+    padding-top: 10px;
   }
 `;
 
@@ -202,13 +208,24 @@ const HeroIcons = styled.div`
 `;
 
 const ELPSProjectCard = props => (
-  <Box {...props} bg='orange' className="project-card">
-    <H3 className="project-card-heading" theme={theme} fontSize="10em" textAlign='center'>ELPS VSCode extension</H3>
+  <Box {...props} bg='orange' className="project-card" sx={{
+    borderRadius: 10,
+  }}>
+    <H3 className="project-card-heading" theme={theme} fontSize="10em" textAlign='center' p={0} >ELPS VSCode extension</H3>
     <FiCode className="project-card-main-icon" size={200} strokeWidth={0.5} alignItems="center" />
     <Text p={3}>ELPS is a dialect of Lisp, the language that we write our smartcontracts at Acre in. The VScode language extension that I’ve created produces more semantics scopes than any other LISP vscode extension.</Text>
-    <Box className="project-card-bottom-icons" mx="auto" >
-      < FiGitlab size="30" strokeWidth="1" /> <FiDownload size="30" strokeWidth="1" />
-    </Box>
+    <Flex className="project-card-bottom-icons" alignContent="center" justifyContent='center' sx={{
+      'svg:hover': {
+        stroke: theme.colors.primary
+      }
+    }}>
+      <Box mb={2}>
+        <Link href="https://gitlab.com/amirH.A"><FiGitlab size="30" strokeWidth="1" /></Link>
+      </Box>
+      <Box mb={2}>
+        <Link href="https://marketplace.visualstudio.com/items?itemName=AmirHA.elps"><FiDownload size="30" strokeWidth="1" /></Link>
+      </Box>
+    </Flex>
   </Box >
 )
 
@@ -249,10 +266,10 @@ function App() {
             </HeroIcons>
           </IconContext.Provider>
         </Flex>
-        <Flex mb={-50} p={0}>
-          <Box p={0} my={100} width={1}>
+        <Flex mb={-50} p={0} >
+          <Box p={0} my={100} width={1} id="about">
             <Text p={5} color='primary' bg='white'>
-              <H2 theme={theme}>About</H2>
+              <H2 theme={theme} >About</H2>
               <p>
                 I’m a software engineer based in London. I graduated in Computer Science from the <PurpleLink theme={theme} href="https://www.cam.ac.uk/">University of Cambridge</PurpleLink> in 2018.
                 <br />  <br />
@@ -265,7 +282,7 @@ function App() {
           </Box>
         </Flex>
 
-        <Box px={5}>
+        <Box px={5} id="projects">
           <H2 theme={theme} >Projects</H2>
         </Box>
         <Flex flexWrap='wrap' p={50}>
@@ -274,8 +291,9 @@ function App() {
             <ELPSProjectCard m={10} />
             <ELPSProjectCard m={10} />
           </Tiles>
-
-
+        </Flex>
+        <Flex id="tools-tech">
+          <ToolsAndTech />
         </Flex>
         <Flex>
           <Box px={2} py={2} width={[1, 1, 1 / 3]}>
@@ -300,7 +318,6 @@ function App() {
 
         <TopNavBar id="top-nav-bar" />
         <AboutMe id="about-me" photoPath={myPhoto} />
-        <ToolsAndTech id="tools-tech" />
         {console.log(timelineData)}
         <Timeline id="timeline" data={timelineData} />
         <Copyright />
