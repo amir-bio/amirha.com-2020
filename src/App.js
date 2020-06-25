@@ -292,57 +292,17 @@ function App() {
             <ELPSProjectCard m={10} />
           </Tiles>
         </Flex>
-        <Flex id="tools-tech">
+
+        <Box bg='white' color='primary' py={30}>
+          <Box px={5} id="tools-tech" >
+            <H2 theme={theme}>Tools and Technologies</H2>
+          </Box>
           <ToolsAndTech />
-        </Flex>
-        <Flex>
-          <Box px={2} py={2} width={[1, 1, 1 / 3]}>
-            <Text p={1} color='background' bg='secondary'>1/3</Text>
-          </Box>
-          <Box px={2} py={2} width={[1, 1, 1 / 3]}>
-            <Text p={1} color='background' bg='secondary'>1/3</Text>
-          </Box>
-          <Box px={2} py={2} width={[1, 1, 1 / 3]}>
-            <Text p={1} color='background' bg='secondary'>1/3</Text>
-          </Box>
-
-
-          <Box px={2} py={2} width={1}>
-            <Text p={1} color='background' bg='secondary'>1</Text>
-          </Box>
-
-
-        </Flex>
-
-
-
-        <TopNavBar id="top-nav-bar" />
-        <AboutMe id="about-me" photoPath={myPhoto} />
-        {console.log(timelineData)}
+        </Box>
         <Timeline id="timeline" data={timelineData} />
         <Copyright />
-      </Box>
+      </Box >
     </ThemeProvider >
   )
 }
-
-{/* <Box width={256}>
-    <Card
-      sx={{
-        p: 1,
-        borderRadius: 2,
-        boxShadow: '0 0 16px rgba(0, 0, 0, .25)',
-      }}>
-      <Image src={image} />
-      <Box px={2}>
-        <Heading as='h3'>
-          {title}
-        </Heading>
-        <Text fontSize={0}>
-          {description}
-        </Text>
-      </Box>
-    </Card>
-  </Box>
-   */}
 export default App

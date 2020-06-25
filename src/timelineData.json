@@ -8,7 +8,9 @@
     "Began creating Responsive Websites.",
     "Started learning other programming Languages"
   ],
-  "2013": ["Graduated with 13 GCSEs"],
+  "2013": [
+    "Graduated with 13 GCSEs"
+  ],
   "2015": [
     "Graduated with 4 A* A-levels",
     "Started studying Computer Science at the University of Cambridge"
@@ -21,5 +23,10 @@
     "Graduated from University of Cambridge",
     "Joined Netcraft as a Computer Scientist"
   ],
-  "2019": ["Joined Acre as a Backend Engineer"]
+  "2019": [
+    "Joined Acre as a Backend Engineer"
+  ],
+  "2020": [
+    "Promoted to Senior Backend Engineer at Acre"
+  ]
 }
