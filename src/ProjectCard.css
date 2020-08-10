@@ -3,6 +3,19 @@
   display: block;
 }
 
-.project-card-bottom-icons {
+.project-card .project-description {
+  box-shadow: inset 0px 5px 4px rgba(0, 0, 0, 0.3), inset 0px -4px 4px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  max-height: 0;
+  padding: 0 20px;
+  transition: max-height 0.5s ease;
+  /* The padding height also increases and is animated */
+  transition: padding 0.5s ease;
+}
 
+.project-card:hover .project-description {
+  /* Allow the height to extend up to 1000px. The height will automatically match the text.
+    A high height amount is needed for screens with slim width. */
+  max-height: 1000px;
+  padding: 30px 20px;
 }

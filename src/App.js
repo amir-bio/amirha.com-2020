@@ -1,5 +1,4 @@
 import React from 'react'
-// import './App.css'
 import './ProjectCard.css'
 
 import 'typeface-roboto'
@@ -207,26 +206,34 @@ const HeroIcons = styled.div`
   }
 `;
 
+
+// TODO: research higher order components and potentially convert this to one
 const ELPSProjectCard = props => (
-  <Box {...props} bg='orange' className="project-card" sx={{
+  <Box bg='orange' className="project-card" sx={{
     borderRadius: 10,
+    mx: ['5%', '10%', 0, '5%'],
   }}>
     <H3 className="project-card-heading" theme={theme} fontSize="10em" textAlign='center' p={0} >ELPS VSCode extension</H3>
     <FiCode className="project-card-main-icon" size={200} strokeWidth={0.5} alignItems="center" />
-    <Text p={3}>ELPS is a dialect of Lisp, the language that we write our smartcontracts at Acre in. The VScode language extension that I’ve created produces more semantics scopes than any other LISP vscode extension.</Text>
+    <Text bg='white' color='primary' className='project-description'>
+      ELPS is a dialect of Lisp which we write our <PurpleLink theme={theme} href="https://en.wikipedia.org/wiki/Smart_contract">smart contracts</PurpleLink> in at Acre. <br />
+      As ELPS is a new languages created by Luther Systems, I worked on creating a set of tooling which our blockchain team uses on a daily basis. <br /> <br />
+      This extension produces more semantics scopes than any other LISP VSCode extension, meaning the editors' theme has access to more information that it can use to provide syntax highlighting.
+    </Text>
     <Flex className="project-card-bottom-icons" alignContent="center" justifyContent='center' sx={{
+      pt: 4,
       'svg:hover': {
         stroke: theme.colors.primary
       }
     }}>
       <Box mb={2}>
-        <Link href="https://gitlab.com/amirH.A"><FiGitlab size="30" strokeWidth="1" /></Link>
+        <Link href="https://gitlab.com/amirH.A/vscode-elps"><FiGitlab size="30" strokeWidth="1" /></Link>
       </Box>
       <Box mb={2}>
         <Link href="https://marketplace.visualstudio.com/items?itemName=AmirHA.elps"><FiDownload size="30" strokeWidth="1" /></Link>
       </Box>
     </Flex>
-  </Box >
+  </Box>
 )
 
 
@@ -286,10 +293,12 @@ function App() {
           <H2 theme={theme} >Projects</H2>
         </Box>
         <Flex flexWrap='wrap' p={50}>
-          <Tiles columns={[1, null, 3]}>
-            <ELPSProjectCard m={10} />
-            <ELPSProjectCard m={10} />
-            <ELPSProjectCard m={10} />
+          <Tiles columns={[1, 1, 2, 3]} sx={{
+            alignItems: 'flex-start'
+          }}>
+            <ELPSProjectCard />
+            <ELPSProjectCard />
+            <ELPSProjectCard />
           </Tiles>
         </Flex>
 
