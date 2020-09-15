@@ -1,5 +1,19 @@
 # Amirha.com
 
+## New 2020 version TODOs left
+
+- [ ] Update text for project cards
+- [ ] Use something like https://www.npmjs.com/package/react-scroll-section for smooth scrolling
+- [ ] Refactor history section. Some of the new requirements to consider:
+      - Responsive
+      - Smother animation
+      - One time animation (right now if you scroll to the very and scroll back up, it will cause a reanimation)
+      - Proper padding/formatting of boxes and content inside them
+- [ ] Investigate: sticky top nav?
+- [ ] Optimise mobile view formatting
+- [ ] clean up main app.js and divide into components
+- [ ] Remove old components/file/code and clean up
+
 ## Story book
 
 I'm experimenting with storybook for developing components in isolation before the app.
