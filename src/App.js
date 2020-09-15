@@ -5,14 +5,12 @@ import 'typeface-roboto'
 import 'typeface-roboto-mono'
 
 import { IconContext } from "react-icons";
-import { FiLinkedin, FiGitlab, FiGithub, FiMail, FiCode, FiAperture, FiPackage, FiDownload } from "react-icons/fi";
+import { FiLinkedin, FiGitlab, FiGithub } from "react-icons/fi";
 
 import { ThemeProvider } from 'emotion-theming'
 import {
   Box,
-  Card,
   Image,
-  Heading,
   Text,
   Flex,
 } from 'rebass'
@@ -22,13 +20,11 @@ import { Tiles } from '@rebass/layout'
 import myPhoto from './me.png'
 import timelineData from './timelineData.json'
 
-import TopNavBar from './components/TopNavBar'
-import AboutMe from './components/AboutMe'
 import ToolsAndTech from './components/ToolsAndTech'
 import Timeline from './components/Timeline'
 import Copyright from './components/Copyright'
 import { ELPSProjectCard, PedestrianDetectorProjectCard, RetailWebsiteGenProjectCard } from './components/ProjectCards'
-import { theme, Link, H1, H2, H3, SecondaryLink, PurpleLink, HeroIcons } from './common'
+import { theme, Link, H1, H2, SecondaryLink, PurpleLink, HeroIcons } from './common'
 
 function App() {
   return (
@@ -53,7 +49,7 @@ function App() {
           <Box>
             <Text p={1} textAlign='center'>
               {/* passing theme in manually for now, theme not getting passed (prob. due to nesting) */}
-              <H1 theme={theme}>Hey👋, I’m Amirhossein Andohkosh</H1>
+              <H1 theme={theme}>Hey <span role="img" aria-label="hand wave" >👋</span>, I’m Amirhossein Andohkosh</H1>
               <H2 theme={theme}>Senior Backend Engineer at <SecondaryLink theme={theme} href="https://acresoftware.com">Acre</SecondaryLink></H2>
             </Text>
           </Box>
@@ -62,7 +58,7 @@ function App() {
               <a href="https://www.linkedin.com/in/amirhossein-andohkosh/"><FiLinkedin strokeWidth={1} /> </a>
               <a href="https://gitlab.com/amirH.A"><FiGitlab strokeWidth={1} /></a>
               <a href="https://github.com/amirha97"><FiGithub strokeWidth={1} /></a>
-              <a ><FiMail strokeWidth={1} /></a>
+              {/* <a ><FiMail strokeWidth={1} /></a> */} {/* TODO: Enable Mail icon after setting up a anti-spam system */}
             </HeroIcons>
           </IconContext.Provider>
         </Flex>
@@ -73,7 +69,7 @@ function App() {
               <p>
                 I’m a software engineer based in London. I graduated in Computer Science from the <PurpleLink theme={theme} href="https://www.cam.ac.uk/">University of Cambridge</PurpleLink> in 2018.
                 <br />  <br />
-                Curently I’m working at Acre, as a senior backend engineer. Our mission is to transform the way we buy property.
+                Currently I’m working at Acre, as a senior backend engineer. Our mission is to transform the way we buy property.
                 Prior to Acre I worked at Netcraft as computer scientist.
                 <br /> <br />
                 I’m always looking for new challenges and ways to improve myself and the world around me.

@@ -1,10 +1,9 @@
 import React from 'react'
 import { Box, Flex, Text } from 'rebass'
 
-// TODO: REMOVE UNUSED icons
-import { FiLinkedin, FiGitlab, FiGithub, FiMail, FiCode, FiAperture, FiPackage, FiDownload, FiBookOpen } from "react-icons/fi";
+import { FiGitlab, FiCode, FiAperture, FiPackage, FiDownload, FiBookOpen } from "react-icons/fi";
 
-import { theme, Link, H1, H2, H3, SecondaryLink, PurpleLink, HeroIcons } from '../../common'
+import { theme, Link, H3, PurpleLink } from '../../common'
 
 
 // TODO: research higher order components and potentially convert this to one

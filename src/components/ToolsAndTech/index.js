@@ -1,9 +1,8 @@
 import React from 'react'
-import { Box, Flex } from 'rebass'
+import { Box } from 'rebass'
 import { Tiles } from '@rebass/layout'
 import styled from 'styled-components'
 
-import bulb from './bulb.svg'
 import monitor from './monitor.svg'
 import gear from './gear.svg'
 import puzzle from './puzzle.svg'
