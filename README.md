@@ -4,12 +4,10 @@
 
 This version is now superseded by https://github.com/amirha97/amirha.com-2021/
 
-Latest screenshots form this version:
-![image.png](./image.png)
-![image-1.png](./image-1.png)
-![image-2.png](./image-2.png)
-![image-3.png](./image-3.png)
-![image-4.png](./image-4.png)
+
+Gif demoing this version of the site:
+
+![amirhaDemo](./amirHADemo.gif)
 
 ## New 2020 version TODOs left
 
